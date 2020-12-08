@@ -6,8 +6,8 @@ const ItemList = (props) => {
   const { items } = props;
   return (
     <ul className="items-list">
-      {items.map((item, i) => (
-        <Item key={i} item={item} />
+      {items.map((item) => (
+        <Item key={item.id} item={item} handleComplete={props.handleComplete} />
       ))}
     </ul>
   );

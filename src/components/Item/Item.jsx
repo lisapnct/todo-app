@@ -1,10 +1,12 @@
 import React from "react";
+import './Item.css'
 
 const Item = (props) => {
+  
   return (
-    <li>
-      <input type="checkbox" id={props.item} />
-      <label htmlFor="">{props.item}</label>
+    <li className={props.item.isCompleted ? 'completed': null}>
+      <input type="checkbox" onChange={() => props.handleComplete(props.item.id)} id={props.item.id} />
+      <label htmlFor="">{props.item.label}</label>
     </li>
   );
 };

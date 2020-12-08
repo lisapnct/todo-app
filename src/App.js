@@ -6,8 +6,20 @@ function App() {
   const [input, setInput] = useState("");
   const [items, setItems] = useState([]);
 
-  const addItem = (item) => {
-    setItems((items) => [...items, item]);
+  const addItem = (input) => {
+    let newItem = {
+      label: input,
+      id: Math.floor(Math.random() * 100),
+      isCompleted: false,
+    }
+    setItems((items) => [...items, newItem]);
+  };
+
+  const completeItem = (id) => {
+      let index = items.findIndex(e => e.id === id)
+      let modItems = [...items];
+      modItems[index].isCompleted = !modItems[index].isCompleted 
+      setItems( modItems );
   };
 
   return (
@@ -15,7 +27,7 @@ function App() {
       <h1>#todo</h1>
       <input onChange={(event) => setInput(event.target.value)} type="text" />
       <button onClick={() => addItem(input)}>add</button>
-      <ItemList items={items} />
+      <ItemList items={items} handleComplete={completeItem} />
     </div>
   );
 }
