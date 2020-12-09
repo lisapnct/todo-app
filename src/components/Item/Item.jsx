@@ -12,7 +12,9 @@ const Item = (props) => {
         id={item.id}
       />
       <label htmlFor="">{item.label}</label>
-      {item.isCompleted && tab === "completed" && <button>delete</button>}
+      {item.isCompleted && tab === "completed" && (
+        <button onClick={() => props.handleDelete(item.id)}>delete</button>
+      )}
     </li>
   );
 };

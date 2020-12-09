@@ -12,6 +12,7 @@ const ItemList = (props) => {
           tab={props.tab}
           item={item}
           handleComplete={props.handleComplete}
+          handleDelete={props.handleDelete}
         />
       ))}
     </ul>

@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ItemList from "./components/ItemList/ItemList";
 
 function App() {
@@ -7,6 +7,10 @@ function App() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [filter, setFilter] = useState("all");
+
+  useEffect(() => {
+    handleFilter(filter);
+  }, [items])
 
   const addItem = (item) => {
     if (item) {
@@ -41,6 +45,10 @@ function App() {
     setFilter(status);
   };
 
+  const deleteItem = (id) => {
+    setItems(items.filter((e) => e.id !== id));
+  };
+
   const displayedItems = filter === "all" ? items : filteredItems;
 
   return (
@@ -60,6 +68,7 @@ function App() {
         items={displayedItems}
         tab={filter}
         handleComplete={completeItem}
+        handleDelete={deleteItem}
       />
     </div>
   );
