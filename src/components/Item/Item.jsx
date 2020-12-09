@@ -1,12 +1,20 @@
 import React from "react";
-import './Item.css'
+import "./Item.css";
 
 const Item = (props) => {
-  
+  const { item, tab } = props;
   return (
-    <li className={props.item.isCompleted ? 'completed': null}>
-      <input checked={props.item.isCompleted ? true: false} type="checkbox" onChange={() => props.handleComplete(props.item.id)} id={props.item.id} />
-      <label htmlFor="">{props.item.label}</label>
+    <li className={item.isCompleted ? "completed" : null}>
+      <input
+        checked={item.isCompleted ? true : false}
+        type="checkbox"
+        onChange={() => props.handleComplete(item.id)}
+        id={item.id}
+      />
+      <label htmlFor="">{item.label}</label>
+      {item.isCompleted && tab === "completed" && (
+        <button onClick={() => props.handleDelete(item.id)}>delete</button>
+      )}
     </li>
   );
 };
