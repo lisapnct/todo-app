@@ -7,7 +7,12 @@ const ItemList = (props) => {
   return (
     <ul className="items-list">
       {items.map((item) => (
-        <Item key={item.id} item={item} handleComplete={props.handleComplete} />
+        <Item
+          key={item.id}
+          tab={props.tab}
+          item={item}
+          handleComplete={props.handleComplete}
+        />
       ))}
     </ul>
   );
