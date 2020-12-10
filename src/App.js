@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     handleFilter(filter);
-  }, [items])
+  }, [items]);
 
   const addItem = (item) => {
     if (item) {
@@ -59,11 +59,14 @@ function App() {
       <button onClick={() => handleFilter("completed")}>Completed</button>
       <hr />
       <input
+        className="item-input"
         value={input}
         onChange={(event) => setInput(event.target.value)}
         type="text"
       />
-      <button onClick={() => addItem(input)}>add</button>
+      <button className="btn-blue" onClick={() => addItem(input)}>
+        add
+      </button>
       <ItemList
         items={displayedItems}
         tab={filter}
