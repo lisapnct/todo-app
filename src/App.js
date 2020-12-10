@@ -49,6 +49,10 @@ function App() {
     setItems(items.filter((e) => e.id !== id));
   };
 
+  const deleteAllItem = (id) => {
+    setItems(items.filter((e) => !e.isCompleted));
+  };
+
   const displayedItems = filter === "all" ? items : filteredItems;
 
   return (
@@ -73,6 +77,9 @@ function App() {
         handleComplete={completeItem}
         handleDelete={deleteItem}
       />
+      {filter === "completed" && displayedItems.length > 0 && (
+        <button onClick={() => deleteAllItem()}>Delete All</button>
+      )}
     </div>
   );
 }
